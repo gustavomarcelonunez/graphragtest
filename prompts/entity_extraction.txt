@@ -1,0 +1,118 @@
+
+-Goal-
+Given a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.
+
+-Steps-
+1. Identify all entities. For each identified entity, extract the following information:
+- entity_name: Name of the entity, capitalized
+- entity_type: One of the following types: [None, species, mammal, pinniped, biological characteristics, behavior, habitat, conservation status, reproduction, research, marine ecosystem]
+- entity_description: Comprehensive description of the entity's attributes and activities
+Format each entity as ("entity"{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<entity_description>)
+
+2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.
+For each pair of related entities, extract the following information:
+- source_entity: name of the source entity, as identified in step 1
+- target_entity: name of the target entity, as identified in step 1
+- relationship_description: explanation as to why you think the source entity and the target entity are related to each other
+- relationship_strength: an integer score between 1 to 10, indicating strength of the relationship between the source entity and target entity
+Format each relationship as ("relationship"{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<relationship_description>{tuple_delimiter}<relationship_strength>)
+
+3. Return output in The primary language of the provided text is "Spanish." as a single list of all the entities and relationships identified in steps 1 and 2. Use **{record_delimiter}** as the list delimiter.
+
+4. If you have to translate into The primary language of the provided text is "Spanish.", just translate the descriptions, nothing else!
+
+5. When finished, output {completion_delimiter}.
+
+-Examples-
+######################
+
+Example 1:
+
+entity_types: [None, species, mammal, pinniped, biological characteristics, behavior, habitat, conservation status, reproduction, research, marine ecosystem]
+text:
+, no he llegado a comprobar casos de alumbramientos gemelar. 
+
+Esta constatación, que podría resultar algo dudosa, está abonada sin embargo por un hecho de fácil reconocimiento. Las hembras que he observado en la época de los alumbramientos, solo atienden a una cría, nunca a dos.
+
+NACIMIENTO Y ADOLESCENCIA
+
+El cuidado de la madre comienza inmediatamente después del nacimiento. Desde el instante en que la cría nace, la madre permanece a su lado, ya sea en actitud contemplativa, lamiendo u olfateando al recién nacido. Durante este tiempo, no se puede separar a la madre de su cría, y en ningún caso ella se resigna a abandonarla. Esta es la única ocasión en la vida de la loba en que enfrenta valient
+------------------------
+output:
+("entity"{tuple_delimiter}ALUMBRAMIENTOS GEMELARES{tuple_delimiter}BEHAVIOR{tuple_delimiter}Los alumbramientos gemelares son casos de nacimiento de dos crías, que no se han comprobado en las hembras observadas.)
+{record_delimiter}
+("entity"{tuple_delimiter}CRÍA{tuple_delimiter}BIOLOGICAL CHARACTERISTICS{tuple_delimiter}La cría es el recién nacido que recibe atención constante de su madre inmediatamente después del nacimiento.)
+{record_delimiter}
+("entity"{tuple_delimiter}MADRE{tuple_delimiter}MAMMAL{tuple_delimiter}La madre es la hembra que cuida de su cría, permaneciendo a su lado y mostrando comportamientos protectores y de atención.)
+{record_delimiter}
+("entity"{tuple_delimiter}NACIMIENTO{tuple_delimiter}REPRODUCTION{tuple_delimiter}El nacimiento es el proceso en el que la cría llega al mundo, momento en el que comienza el cuidado materno.)
+{record_delimiter}
+("entity"{tuple_delimiter}ADOLESCENCIA{tuple_delimiter}BEHAVIOR{tuple_delimiter}La adolescencia es la etapa de desarrollo que sigue al nacimiento, donde la madre continúa cuidando de la cría.)
+{record_delimiter}
+("relationship"{tuple_delimiter}MADRE{tuple_delimiter}CRÍA{tuple_delimiter}La madre cuida de su cría inmediatamente después del nacimiento, mostrando un comportamiento protector y de atención constante.{tuple_delimiter}10)
+{record_delimiter}
+("relationship"{tuple_delimiter}NACIMIENTO{tuple_delimiter}MADRE{tuple_delimiter}El nacimiento de la cría marca el inicio del cuidado materno por parte de la madre.{tuple_delimiter}8)
+{record_delimiter}
+("relationship"{tuple_delimiter}NACIMIENTO{tuple_delimiter}CRÍA{tuple_delimiter}El nacimiento es el momento en que la cría llega al mundo y comienza su vida.{tuple_delimiter}9)
+{record_delimiter}
+("relationship"{tuple_delimiter}ADOLESCENCIA{tuple_delimiter}MADRE{tuple_delimiter}La madre continúa cuidando de la cría durante la etapa de adolescencia.{tuple_delimiter}7)
+{record_delimiter}
+("relationship"{tuple_delimiter}ADOLESCENCIA{tuple_delimiter}CRÍA{tuple_delimiter}La adolescencia es la etapa de desarrollo que sigue al nacimiento y donde la cría sigue bajo el cuidado de la madre.{tuple_delimiter}6)
+{completion_delimiter}
+#############################
+
+
+Example 2:
+
+entity_types: [None, species, mammal, pinniped, biological characteristics, behavior, habitat, conservation status, reproduction, research, marine ecosystem]
+text:
+CAPÍTULO I
+
+PINNÍPEDOS
+
+RESUMEN:
+1. Introducción
+2. Lobos marinos de uno y dos pelos; Otaria flavescens y Arctocephalus australis
+3. Elefantes marinos; Mirounga leoninas
+4. Consideraciones generales
+5. Algunas características y determinaciones biológicas
+
+INTRODUCCIÓN
+
+Este trabajo, que es la concreción de las observaciones realizadas sobre los “pinnípedos” en el curso de las investigaciones llevadas a cabo desde el año 1946 en las costas atlánticas y fueguinas de nuestro país, contiene determinaciones de interés sobre su vida y costumbres, especialmente relacionadas con la ubicación de los apostaderos y el aprovechamiento industrial y comercial de estas especies.
+
+Esta modesta contribución al estudio de los “pinnípedos
+------------------------
+output:
+("entity"{tuple_delimiter}PINNÍPEDOS{tuple_delimiter}None{tuple_delimiter}Los pinnípedos son un grupo de mamíferos marinos que incluye focas, leones marinos y morsas, conocidos por su adaptación a la vida en el agua y en tierra.)
+{record_delimiter}
+("entity"{tuple_delimiter}LOBOS MARINOS DE UNO Y DOS PELOS{tuple_delimiter}PINNIPED{tuple_delimiter}Los lobos marinos de uno y dos pelos son especies de pinnípedos que se encuentran en las costas atlánticas y fueguinas, conocidos por su comportamiento social y su hábitat en colonias.)
+{record_delimiter}
+("entity"{tuple_delimiter}OTARIA FLAVESCENS{tuple_delimiter}SPECIES{tuple_delimiter}Otaria flavescens es una especie de lobo marino que habita en las costas de América del Sur, caracterizada por su pelaje y su comportamiento social.)
+{record_delimiter}
+("entity"{tuple_delimiter}ARCTOCEPHALUS AUSTRALIS{tuple_delimiter}SPECIES{tuple_delimiter}Arctocephalus australis es otra especie de lobo marino que se encuentra en el hemisferio sur, conocida por su capacidad de adaptación a diferentes hábitats marinos.)
+{record_delimiter}
+("entity"{tuple_delimiter}ELEFANTES MARINOS{tuple_delimiter}PINNIPED{tuple_delimiter}Los elefantes marinos son grandes pinnípedos que se caracterizan por su tamaño y su comportamiento migratorio, encontrándose en las costas del hemisferio sur.)
+{record_delimiter}
+("entity"{tuple_delimiter}MIROUNGA LEONINAS{tuple_delimiter}SPECIES{tuple_delimiter}Mirounga leoninas es una especie de elefante marino que se encuentra en el hemisferio sur, conocida por su gran tamaño y su hábitat en aguas frías.)
+{record_delimiter}
+("entity"{tuple_delimiter}CONSIDERACIONES GENERALES{tuple_delimiter}None{tuple_delimiter}Consideraciones generales sobre los pinnípedos incluyen su biología, comportamiento y la importancia de su conservación en los ecosistemas marinos.)
+{record_delimiter}
+("entity"{tuple_delimiter}CARACTERÍSTICAS Y DETERMINACIONES BIOLÓGICAS{tuple_delimiter}BIOLOGICAL CHARACTERISTICS{tuple_delimiter}Las características y determinaciones biológicas de los pinnípedos abarcan aspectos como su reproducción, alimentación y adaptación a su entorno.)
+{record_delimiter}
+("relationship"{tuple_delimiter}LOBOS MARINOS DE UNO Y DOS PELOS{tuple_delimiter}OTARIA FLAVESCENS{tuple_delimiter}Los lobos marinos de uno y dos pelos incluyen a la especie Otaria flavescens, que es un ejemplo de esta categoría de pinnípedos{tuple_delimiter}8)
+{record_delimiter}
+("relationship"{tuple_delimiter}LOBOS MARINOS DE UNO Y DOS PELOS{tuple_delimiter}ARCTOCEPHALUS AUSTRALIS{tuple_delimiter}Los lobos marinos de uno y dos pelos también incluyen a Arctocephalus australis, que es otra especie de esta categoría{tuple_delimiter}8)
+{record_delimiter}
+("relationship"{tuple_delimiter}ELEFANTES MARINOS{tuple_delimiter}MIROUNGA LEONINAS{tuple_delimiter}Los elefantes marinos son representados por la especie Mirounga leoninas, que es un ejemplo de esta categoría de pinnípedos{tuple_delimiter}8)
+{completion_delimiter}
+#############################
+
+
+
+-Real Data-
+######################
+entity_types: [None, species, mammal, pinniped, biological characteristics, behavior, habitat, conservation status, reproduction, research, marine ecosystem]
+text: {input_text}
+######################
+output:
