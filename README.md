@@ -27,7 +27,7 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 ### 1. Book Digitization
 
-This project contain a digitalized text. If you want to use your own text and generate the new knowledge graph, run:
+This project contains digitized text. If you want to use your own text and generate the new knowledge graph, run:
 ```bash
 graohrag index...
 ```
