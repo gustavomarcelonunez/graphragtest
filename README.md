@@ -27,7 +27,7 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 ### 1. Book Digitization
 
-This project contains digitized text [see here](https://github.com/gustavomarcelonunez/oceangraphrag/blob/main/ragtest/input/resumen.txt). If you want to use your own text and generate the new knowledge graph, run:
+This project contains digitized text ([see here](https://github.com/gustavomarcelonunez/oceangraphrag/blob/main/ragtest/input/resumen.txt)). If you want to use your own text and generate the new knowledge graph, run:
 ```bash
 graphrag index...
 ```
