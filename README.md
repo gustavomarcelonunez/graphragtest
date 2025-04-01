@@ -7,7 +7,7 @@ This project uses **GraphRAG** to digitize and structure book information into a
 - **Operating System:** Ubuntu 22.04
 - **Python:** 3.10+
 - **GraphRAG:** [Official Documentation](https://microsoft.github.io/graphrag/)
-- 
+  
 ## Installation
 
 1. Clone the repository:
@@ -29,14 +29,14 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 This project contains digitized text. If you want to use your own text and generate the new knowledge graph, run:
 ```bash
-graohrag index...
+graphrag index...
 ```
 
 ### 2. Natural Language Queries
 
 Run:
 ```bash
-graohrag query...
+graphrag query...
 ```
 
 ## Additional Documentation
