@@ -10,24 +10,29 @@ This project uses **GraphRAG** to digitize and structure book information into a
   
 ## Installation
 
-1. Clone the repository:
+1. Clone the repository using HTTPS:
    ```bash
    git clone https://github.com/gustavomarcelonunez/oceangraphrag.git
+   ```
+   Or using SSH:
+   ```bash
+   git clone git@github.com:gustavomarcelonunez/oceangraphrag.git
+   ```
+   Then navigate into the project directory:
+   ```bash
    cd oceangraphrag
    ```
 
-2. Create a virtual environment and install dependencies:
+2. Install the required dependencies (GraphRAG):
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
+   pip install git+https://github.com/microsoft/graphrag.git
    ```
 
 ## Usage
 
 ### 1. Book Digitization
 
-This project contains digitized text ([see here](https://github.com/gustavomarcelonunez/oceangraphrag/blob/main/ragtest/input/resumen.txt)). If you want to use your own text and generate the new knowledge graph, run:
+This project contains digitized text ([see here](https://github.com/gustavomarcelonunez/oceangraphrag/blob/main/ragtest/input/resumen.txt)). If you want to use your own text to generate a new knowledge graph, simply replace the existing file with your own and then run:
 ```bash
 graphrag index...
 ```
