@@ -25,7 +25,7 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 2. Install the required dependencies (GraphRAG):
    ```bash
-   pip install git+https://github.com/microsoft/graphrag.git
+   pip install graphrag
    ```
 
 ## Usage
