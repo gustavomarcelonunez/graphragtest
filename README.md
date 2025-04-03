@@ -30,7 +30,7 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 ## Usage
 
-### 1. Adding ypu OpenAI API key
+### 1. Adding your OpenAI API key
 You need to provide your own OpenAI API key in the [.env file](https://github.com/gustavomarcelonunez/oceangraphrag/blob/main/ragtest/.env).
 Add the following line to your .env file:
 ```
