@@ -4,7 +4,7 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 ## Requirements
 
-- **Operating System:** Ubuntu 22.04
+- **Operating System:** Ubuntu 20.04, 22.04 or 24.04
 - **Python:** 3.10+
 - **GraphRAG:** [Official Documentation](https://microsoft.github.io/graphrag/)
   
@@ -34,15 +34,21 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 This project contains digitized text ([see here](https://github.com/gustavomarcelonunez/oceangraphrag/blob/main/ragtest/input/resumen.txt)). If you want to use your own text to generate a new knowledge graph, simply replace the existing file with your own and then run:
 ```bash
-graphrag index...
+graphrag index --root ./ragtest
 ```
 
 ### 2. Natural Language Queries
 
-Run:
+For global query method run:
 ```bash
-graphrag query...
+graphrag query --method global --root ./ragtest --query "your query"
 ```
+
+For local query method run:
+```
+graphrag query --method local --root ./ragtest --query "your query"
+```
+More information about global and local query methods [here](https://microsoft.github.io/graphrag/query/overview/).
 
 ## Additional Documentation
 
