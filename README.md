@@ -6,7 +6,7 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 - **Operating System:** Ubuntu 20.04, 22.04 or 24.04
 - **Python:** 3.10+
-- **GraphRAG:** [Official Documentation](https://microsoft.github.io/graphrag/)
+- **GraphRAG:** 0.5.0
   
 ## Installation
 
@@ -25,12 +25,20 @@ This project uses **GraphRAG** to digitize and structure book information into a
 
 2. Install the required dependencies (GraphRAG):
    ```bash
-   pip install graphrag
+   pip install graphrag==0.5.0
    ```
 
 ## Usage
 
-### 1. Book Digitization
+### 1. Adding ypu OpenAI API key
+You need to provide your own OpenAI API key in the [.env file](https://github.com/gustavomarcelonunez/oceangraphrag/blob/main/ragtest/.env).
+Add the following line to your .env file:
+```
+GRAPHRAG_API_KEY=your_openai_api_key_here  
+```
+For more information on how to get your OpenAI API key, check [this link](https://platform.openai.com/api-keys).
+
+### 2. Book Digitization
 
 This project contains digitized text ([see here](https://github.com/gustavomarcelonunez/oceangraphrag/blob/main/ragtest/input/resumen.txt)). If you want to use your own text to generate a new knowledge graph, simply replace the existing file with your own and then run:
 ```bash
